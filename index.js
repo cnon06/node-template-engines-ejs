@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 
+app.set("view engine", "ejs");
+// const ejst = app.get("view engine");
+// console.log(ejst);
 var path = require("path");
 
 var public = path.join(__dirname, "public");
@@ -14,30 +17,6 @@ const adminRoutes = require("./routes/admin");
 
 app.use("/admin", adminRoutes);
 app.use(userRoutes);
-
-// app.use("/blogs/:id", (req, res) => {
-//   var path = require("path");
-
-//   var x = path.join(__dirname, "views\\users", "blog-details.html");
-
-//   res.sendFile(x);
-// });
-
-// app.use("/blogs", (req, res) => {
-//   var path = require("path");
-
-//   var x = path.join(__dirname, "views\\users", "blogs.html");
-
-//   res.sendFile(x);
-// });
-
-// app.use("/", (req, res) => {
-//   var path = require("path");
-
-//   var x = path.join(__dirname, "views\\users", "index.html");
-
-//   res.sendFile(x);
-// });
 
 app.listen(3000, () => {
   console.log("listening on port 3000");
